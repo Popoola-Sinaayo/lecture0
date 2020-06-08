@@ -13,7 +13,7 @@
                    padding: 10px 100px 100px 100px;
                    background-size: cover;
                    background-repeat: no-repeat;
-                   background-blend-mode: darken;;}
+                   background-blend-mode: saturation;}
  .First-heading {text-align: center;
                 color: red;
                 font-family: cursive;
@@ -23,19 +23,21 @@
   #sub-heading {text-align: center;
                 color: white;
                 font-size: 30px;}
-  li {float: left;}
-  ul {display: block;
-      list-style-type: none;}
-  li a {text-decoration: none;
-      color: black;
-       padding: 0px 50px 0px 70px;}
-  #headingwithlinks {background-color: black;
-                    padding: 40px 10px 40px 10px;}
-  .links {background-color: #00ff00;
-         padding: 5px 5px 5px 5px;
-         margin: 0px 70px 0px 70px;
-         border-radius: 8px;}
-  #secondlink {text-align: center;}
+                li {float: left;}
+                ul {display: block;
+                    list-style-type: none;}
+                li a {text-decoration: none;
+                    color: black;
+                     padding: 0px 80px 0px 80px;}
+                #headingwithlinks {background-color: black;
+                                  padding: 40px 10px 40px 10px;}
+                .links {background-color: #00ff00;
+                       padding: 5px 5px 5px 5px;
+                       margin: 0px 80px 0px 80px;
+                       border-radius: 8px;
+                      display: flex;
+                      }
+                #secondlink {text-align: center;}
 
   .link2 {text-decoration: none;
          color: white;
@@ -80,6 +82,29 @@
            text-align: center;}
  .paragraph1 {color: white;
               text-align: center;}
+  .h1 {display: none;}
+  @media (max-width:600px){
+    li {float: none;}
+    li a {margin: auto;}
+    .First-heading {font-size: 20px;}
+    #second-header {font-size: 20px;}
+    .link10 {font-size: 20px;
+             text-align: center;}
+    .link2 {text-decoration: none;
+           color: white;
+           background-color: black;
+           padding: 0px 10px 0px 10px;
+           border-radius: 10px;
+           text-align: center;
+           border: green 1px solid;}
+     .links {background-color: #00ff00;
+              padding: 5px 0px 5px 60px;
+              margin: 20px 80px 20px 80px;
+              border-radius: 8px;}
+    .links11 {font-size: 30px;
+             text-align: center;}
+    .h1 {display: block;}
+  }
 
 </style>
 <body>
@@ -90,16 +115,18 @@
   <div id="links">
     <ul>
       <li>
-        <a href="67575" class="links">Home</a>
+        <a href="67575" class="links"><span class="links11">Home</span></a>
       </li>
       <li>
-        <a href="6536578" class="links">About</a>
+        <a href="6536578" class="links"><span class="links11">About</span></a>
       </li>
+
       <li>
-        <a href="8696"class="links">Services</a>
+        <a href="8696"class="links"><span class="links11">Services</span></a>
       </li>
+
       <li>
-        <a href="8669"class="links">About us</a>
+        <a href="8669"class="links"><span class="links11">About us</span></a>
       </li>
     </ul>
   </div><br></div>
@@ -109,7 +136,7 @@
     <h1 id="second-header"> Welcome To The Creative Web Design<br> At Popoola's Web Design We let you specify and we build <br>........you specify, we build<h1>
 <br>
      <div id="secondlink">
-      <a href="8696" class="link2">Read more </a>
+      <a href="8696" class="link2"><span class="link10">Read more</span> </a>
     </div>
 </header>
 <main>
