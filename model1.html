@@ -83,11 +83,11 @@
  .paragraph1 {color: white;
               text-align: center;}
   .h1 {display: none;}
-  @media (max-width:600px){
+  @media (max-width:1000px){
     li {float: none;}
     li a {margin: auto;}
     .First-heading {font-size: 20px;}
-    #second-header {font-size: 20px;}
+    #second-header {font-size: 10px;}
     .link10 {font-size: 20px;
              text-align: center;}
     .link2 {text-decoration: none;
@@ -104,13 +104,33 @@
     .links11 {font-size: 10px;
              text-align: center;}
     .h1 {display: block;}
+    .h2 {font-size: 10px;}
+    .div4 {float: lef;}
   }
-
+  .subnav1 {color: white;
+           font-size: 50px;
+           text-align: center;}
+  #links {display: none;}
+  .subnav2 {color: white;
+            font-size: 50px;
+            text-align: center;}
 </style>
+<script>
+function nav1() {
+  document.getElementById('links').style.display = 'flex';
+  document.getElementById('nav1').style.display = 'none';
+}
+function nav2() {
+  document.getElementById('links').style.display = 'none';
+}
+</script>
 <body>
   <div id="headingwithlinks">
   <div id="sub-heading">
     Popoola's Web Design
+  </div>
+  <div class="nav1">
+    <h1 class="subnav1" onclick="nav1()">+</h1>
   </div>
   <div id="links">
     <ul>
@@ -127,9 +147,10 @@
 
       <li>
         <a href="8669"class="links"><span class="links11">About us</span></a>
-      </li>
+      </li><br>
+      <h1 class="subnav2" onclick="nav2()">-</h1>
     </ul>
-  </div><br></div>
+  </div></div>
 
 <header>
   <h1 class="First-heading">Popoola Web Design<h1>
@@ -141,7 +162,7 @@
 </header>
 <main>
 <div class="second-division">
-  <h1>You can login below to register an account with us</h1>
+  <h1 class="h2">You can login below to register an account with us</h1>
   <form class="" action="index.html" method="post">
     <div class="inputs">First Name:</div><br>
     <input type="text" name="input1" placeholder="First Name" class="inputs1"><br>
@@ -173,6 +194,7 @@
   <p class="paragraph1">Advertise </p>
   <p class="paragraph1">Market</p>
 </div><br>
+<div class="div4">
   <a href="5859596"><img src="facebook.png" class="input6"></a>
   <a href="4749506"><img src="google.png" class="inputs7"></a>
   <a href="484785"><img src="insta.png" class="inputs8"></a>
