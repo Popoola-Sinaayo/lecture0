@@ -117,6 +117,7 @@
             font-size: 50px;
             text-align: center;
              display: none;}
+  .mope {text-align: center;}
 </style>
 <script>
 function nav1() {
@@ -126,6 +127,13 @@ function nav1() {
 }
 function nav2() {
   document.getElementById('links').style.display = 'none';
+}
+function func1() {
+  alert("Note that on submitting you agree to our terms and condition!");
+  if (typeof input4 != "number" && typeof input4 != "strings") {
+  alert("Input valid Stuffs")
+  }
+
 }
 </script>
 <body>
@@ -152,10 +160,10 @@ function nav2() {
       <li>
         <a href="8669"class="links"><span class="links11">About us</span></a>
       </li>
+      <div class="mope">
+        <h1 class="subnav2" onclick="nav2()">-</h1>
+      </div>
     </ul>
-    <div class="">
-      <h1 class="subnav2" onclick="nav2()">-</h1>
-    </div>
   </div></div>
 
 <header>
@@ -169,23 +177,23 @@ function nav2() {
 <main>
 <div class="second-division">
   <h1 class="h2">You can login below to register an account with us</h1>
-  <form class="" action="index.html" method="post">
+  <form class="" action="{{ url_for('fall') }}" method="post">
     <div class="inputs">First Name:</div><br>
-    <input type="text" name="input1" placeholder="First Name" class="inputs1"><br>
+    <input type="text" name="input1" placeholder="First Name" class="inputs1" required><br>
     <div class="inputs">Last Name:<div><br>
-    <input type="text" name="input2" placeholder="Last Name" class="inputs1"><br>
+    <input type="text" name="input2" placeholder="Last Name" class="inputs1" required><br>
     <div class="inputs">Email Adress:</div><br>
-    <input type="text" name="input3" placeholder="example@email.com" class="inputs1"><br>
+    <input type="text" name="input3" placeholder="example@email.com" class="inputs1" required><br>
     <div class="inputs">Select Your Gender:</div><br>
-    <select class="inputs1" name="">
+    <select class="inputs1" name="" required>
       <option value="male" class="inputs1">Male</option>
       <option value="femlae" class="inputs1">Female</option>
       <option value="Others" class="inputs1">I'd rather not say</option>
     </select>
     <div class="inputs">Password:<br><br>
-    <input type="password" name="input4" placeholder="848484849" class="inputs1"><br><br>
+    <input type="password" name="input4" placeholder="Password" class="inputs1" required><br><br>
     <div id="button-overall">
-      <button type="button" name="button" id="button1">Submit</button>
+      <button id="button1" onclick="func1()">Submit</button>
     </div>
   </form>
 </div>
@@ -205,6 +213,6 @@ function nav2() {
   <a href="4749506"><img src="google.png" class="inputs7"></a>
   <a href="484785"><img src="insta.png" class="inputs8"></a>
   <a href="958696"><img src="pool.png" class="inputs9"></a>
-</div>
+  </form>
 </body>
 </html>

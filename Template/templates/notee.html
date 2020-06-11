@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>POpoola WEb Design</title>
+  </head>
+  <body>
+    <ul>
+      {% for note in notes %}
+        <li>{{ note }}</li>
+      {% endif %}
+    </ul>
+
+    <form class="" action="{{ url_for('notee') }}" method="post">
+      <input type="text" name="note" value="Type Ypur notes">
+      <button type="button" name="button">Add Note</button>
+    </form>
+  </body>
+</html>
