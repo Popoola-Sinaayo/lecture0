@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Animate</title>
+  </head>
+  <style>
+    @keyframes move {
+      from {
+        left: 0%
+      }
+      to {
+        left: 50%
+      }
+    }
+    h1 {
+      position: relative;
+      animation-name: move;
+      animation-duration: 5s;
+      animation-fill-mode: forwards;
+    }
+  </style>
+  <body>
+    <h1>Welcome</h1>
+  </body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <script>
+  // the number of the post i want to load first
+  let counter = 1
+  // total number of posts i want to load at a time
+  const quantity = 20
+    document.addEventListener('DOMContentLoaded', load);
+    window.onscroll = () => {
+      if (window.innerHeight + window.scrollY >= document.body.offsetHeight){
+        load()
+      }
+    }
+
+    function load() {
+      // sets start and end of postnumbers and also update counter
+      const start = counter
+      const end = start + quantity - 1
+      counter = end + 1
+
+      // open up the ajax request
+      const request = new XMLHttpRequest();
+      request.open('POST', '/posts')
+      request.onload = () => {
+        // gets the response from the server in form of json and converts it to textx before rendering the text
+        const data = JSON.parse(request.responseText)
+        data.forEach(add_post)
+      }
+        // add start data and end data to the request by appending them to the data atrribute
+        const data = new FormData()
+        data.append('start', start)
+        data.append('end', end)
+        // sending the request stored in the data variable above
+
+        request.send(data)
+        // hides the data using some specific css properties aniamtion to be precise
+        document.addEventListener('click', event => {
+          const element = event.target;
+          if (element.className === 'hide') {
+            element.parentElement.style.animationPlayState = 'running';
+            element.parentElement.addEventListener('animationend', () => {
+              element.parentElement.remove()
+            })
+          }
+        })
+
+        // the add_post function thta is been declared above is now been defined below
+        function add_post(contents) {
+          const post = document.createElement('div')
+          post.className = 'post';
+          post.innerHTML = contents
+          // add posts to DOM
+          document.querySelector('#posts').append(post)
+          // adding the hide4 button to the html post
+          const hide = document.createElement('button');
+          hide.className = 'hide';
+          hide.innerHTML = 'x';
+          post.append(hide)
+
+          }
+        }
+
+
+
+
+
+  </script>
+  <style media="screen">
+    .post {background-color: green;
+          padding: 20px 10px 20px 10px;
+          margin: 10px 10px 10px 10px;
+          animation-name: hide;
+          animation-duration: 5s;
+          animation-fill-mode: forwards;
+        animation-play-state: paused;}
+  button {float: right;
+         color: blue;
+         border-radius: 10px;}
+    @keyframes hide {
+      0% {opacity: 1;
+        height: 100%;
+        line-height: 100%;
+        margin-bottom: 10px;
+      }
+      75% {
+        opacity: 0;
+        height: 100%;
+        line-height: 100%;
+        margin-bottom: 10px;
+        padding: 20px;
+
+      }
+      100% {
+        opacity: 0
+        height: 0%;
+        line-height: 0%;
+        margin-bottom: 0px;
+        padding: 0;
+      }
+    }
+  </style>
+  <body>
+    <div id="posts">
+
+    </div>
+  </body>
+</html>

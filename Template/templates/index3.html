@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Vote</title>
+  </head>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+  <script src="{{ url_for('static', filename='index7.js') }}" charset="utf-8"></script>
+  <!-- i used this to get rid of favicon error in the console -->
+  <link rel="icon" href="data:;base64">
+  <link rel="icon" href="data:;64, iVBORw0KGgo">
+  <body>
+    <h1>Please Cast Your Vote</h1>
+<ol id="votes">
+
+</ol>
+<hr>
+<!-- the data-vote allows us to access the value in the Javascript code -->
+<button data-vote="yes">Yes</button>
+<button data-vote="no">No</button>
+<button data-vote="maybe">Maybe</button>
+  </body>
+</html>

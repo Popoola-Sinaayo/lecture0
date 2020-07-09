@@ -8,6 +8,9 @@
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+ <style media="screen">
+   p {text-align: center;}
+ </style>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <a class="navbar-brand" href="#">Navbar</a>
@@ -20,12 +23,17 @@
         <li class="nav-item active">
           <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item active">
           <a class="nav-link" href="#">Link</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        <li class="nav-item active">
+          <a class="nav-link" href="/login" tabindex="-1" aria-disabled="true">Login</a>
         </li>
+        {% if login %}
+        <li class="nav-item">
+          <a class="nav-link" href="#">Logout</a>
+        </li>
+        {% endif %}
       </ul>
       <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search">
@@ -33,7 +41,12 @@
       </form>
     </div>
   </nav>
-    <h1>Thank you for registering{{ UserName }}</h1>
+  <div class="alert alert-success">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <p>Sucess</p>
+    <p>You are successfully log in</p>
+  </div>
+    <h1>Thank you for registering {{ UserName }}</h1>
     <h2>You can now check out some of the exciting features of our Website</h2>
     <h3>You can Check out the latest exchange Currency</h3>
     <a href="">Click Here</a>

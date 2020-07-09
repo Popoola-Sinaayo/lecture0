@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <script>
+  var width = window.innerWidth
+  console.log(width)
+  // load the DOM content
+    document.addEventListener('DOMContentLoaded',() => {
+      // running  a function defined later in the code
+      load_page('first');
+      // querying for all the button and storing accessing them through the link attribute
+      document.querySelectorAll('.nav-link').forEach(link =>{
+        link.onclick = () => {
+          // gets the value associated with the data-page in the html document
+          load_page(link.dataset.page)
+          // prevents the page form loading a new page or teying to load a new page
+          return false;
+        }
+      })
+
+    })
+    // popstate function
+    // this will display the function on the previous Page
+    window.onpopstate = e => {
+      const data = e.state;
+      document.title = data.title
+      document.querySelector('#body').innerHTML = data.text
+    }
+    // the function load_page called earlier in the code which takes an aurgument called name which will specify the page to load
+    function load_page(name) {
+      // creating an ajax request and storeing it in a request varaiable
+      const request = new XMLHttpRequest();
+      // opens the ajax server through a get method with the name atrribute
+      request.open('GET', `/${name}`);
+      request.onload = () => {
+        // the responseText returns whatever texts the response gets
+        const response = request.responseText;
+        // displays it in the div with id body in the html
+        document.querySelector('#body').innerHTML = response;
+        // push state to url]
+        //document.title = name;
+        //history.pushState(null, name, name);
+        document.title = name;
+        history.pushState({'title': name, "text": response}, name, name)
+      }
+      // send the request
+      request.send()
+    }
+  </script>
+  <style>
+  body {background-color: black;
+        color: white;}
+
+  li {float: left;}
+  </style>
+  <body>
+    <ul id="nav">
+      <!-- the data-page lets us access the datapage value through the Javascript -->
+      <li><a href="" class="nav-link" data-page="first">FirstPage</a></li>
+      <li><a href="" class="nav-link" data-page="second">SecondPage</a></li>
+      <li><a href="" class="nav-link" data-page="third">ThirdPage</a></li>
+    </ul><br><br><br>
+    <hr>
+    <div id="body">
+
+    </div>
+  </body>
+</html>

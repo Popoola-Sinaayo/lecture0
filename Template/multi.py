@@ -3,15 +3,19 @@ from flask import Flask, render_template
 
 app = Flask(__name__, template_folder="templates")
 
+text = ["bnbnmdspbndpbmdbdbdbdbkdgbddbibonbonbdbdbdbdbdbdb",
+"dbdbdbdbdbdbdbdbddbdbdbdbdbdbdbdbdbdbdbdbdbddbdbdbbdbdbdbdbdbdbkhikrnogndgonighdpobjhdpgu0gbmddgig9hgdjhgpdhd0giue0ghjdhg09d8hgdh",
+"dghdhnpjhbjh-jh  eydrghtg9hdghdg]g9hehgehbetgn9g09tohmrhtjeihnedghdeghfnpjmrjhedgnrgbhojrhgjfpbn-eihnedghdeghfnpjmrjhrhgju0deuhr"]
+
+
 @app.route('/')
 def index():
     return render_template("index1.html")
-    text = ["bnbnmdspbndpbmdbdbdbdbkdgbddbibonbonbdbdbdbdbdbdb",
-    "dbdbdbdbdbdbdbdbddbdbdbdbdbdbdbdbdbdbdbdbdbddbdbdbbdbdbdbdbdbdbkhikrnogndgonighdpobjhdpgu0gbmddgig9hgdjhgpdhd0giue0ghjdhg09d8hgdh",
-    "dghdhnpjhbjh-jh  ey]drghtg9hdghdg]g9hehgehbetgn9g09tohmrhtjeihnedghdeghfnpjmrjhedgnrgbhojrhgjfpbn-eihnedghdeghfnpjmrjhrhgju0deuhr"]
+
 
 @app.route('/first')
-def first('/'):
+def first():
+    # returns the fisrt index of thge text defined above
     return text[0]
 @app.route('/second')
 def second():

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>WEB</title>
+  </head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.min.js" charset="utf-8"></script>
+  <script id="result" type="text/x-handlebars-template">
+    <li>
+    <!-- the #each type loops over all the values of any variable associated with it -->
+    You rolled:
+    {{#each values}}
+    {{ this }}
+    {{/each}}
+    (Total = {{total}})
+    </li>
+  </script>
+  <script>
+    const template = Handlebars.compile(document.querySelector('#result').innerHTML);
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelector('#roll').onclick = () => {
+        // generates the random rolls
+        // the parseint function converts the input text to string
+        const counter = parseInt(document.querySelector('#counter').value);
+        const roll = [];
+        let total = 0
+        for (let i = 0; i < counter; i++) {
+          const value = Math.floor(Math.random() * 6) + 1;
+          roll.push(value);
+          total += value
+        }
+        // renders the template to handlebars for processing
+        const content = template({"values": roll, "total": total})
+        document.querySelector('#rolls').innerHTML += content;
+      }
+    })
+  </script>
+
+
+  <body>
+    <input type="number" id="counter" placeholder="enter a dice to roll">
+    <input type="submit" id="roll">
+    <ol type="1" id="rolls">
+
+    </ol>
+  </body>
+</html>

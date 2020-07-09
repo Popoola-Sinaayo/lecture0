@@ -9,7 +9,6 @@ class Website2(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     UserName = db.Column(db.String)
     Password = db.Column(db.String)
-    User_id = db.relationship("Website2", backref="Website", lazy=True)
     def __init__(self, UserName, Password):
         self.UserName = UserName
         self.Password = Password

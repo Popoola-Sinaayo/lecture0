@@ -31,6 +31,7 @@
                padding: 10px 10px 10px 10px;
              border-radius: 10px;}
     .span1 {text-align: center;}
+    .paragraph {text-align: center;}
 </style>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 <a class="navbar-brand" href="#">Navbar</a>
@@ -57,11 +58,18 @@
 </div>
 </nav>
    <h3 class="First-heading">Just one more step please {{ FirstName }}</h3>
+   {% if message %}
+   <div class="alert alert-danger">
+     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+     <p class="paragraph">Dear {{ UserName }}</p>
+     <p class="paragraph">{{ message }}</p>
+   </div>
+   {% endif %}
    <form class="" action="/submit1" method="post">
    <h4>UserName:<br></h4>
    <input type="text" name="UserName" placeholder="Please type in  your UserName"><br>
    <h4>Password:<br></h4>
-   <input type="text" name="Password" placeholder="Password"><br>
+   <input type="password" name="Password" placeholder="Password"><br>
    <div class="span1">
      <button class="submit">Submit</button>
    </div>

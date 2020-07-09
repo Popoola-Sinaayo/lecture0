@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>WEB!</title>
+  </head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.min.js" charset="utf-8"></script>
+  <script>
+    const template = Handlebars.compile("<li>You rolled a {{value}}</li>");
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelector('#roll').onclick = () => {
+        // generates a random roll
+        // please note that the random() function generates number between 0 nad 1
+        // the math.flor gives diff number 
+        const roll = Math.floor((Math.random() * 6) + 1);
+        // add the rol result to dom
+        const content = template({"value": roll});
+        document.querySelector('#rolls').innerHTML += content;
+      }
+    })
+  </script>
+  <body>
+    <button type="button" id="roll">Roll</button>
+    <ul id="rolls">
+
+    </ul>
+  </body>
+</html>

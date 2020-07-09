@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>WEB</title>
+  </head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.min.js" charset="utf-8"></script>
+<script id="post" type="text/x-handlebars-template">
+<div class="post">
+  <!-- please note that the raw syntax allows us to prevent letting flask's Jinja2 try to plug in a value to the templates in order it tells jinja to skip this -->
+  {% raw -%}
+     {{contents}}
+  {%- endraw %}
+  <button class="hide">x</button>
+  </div>
+</script>
+<script>
+// the number of the post i want to load first
+let counter = 1
+// total number of posts i want to load at a time
+const quantity = 20
+  document.addEventListener('DOMContentLoaded', load);
+  window.onscroll = () => {
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight){
+      load()
+    }
+  }
+
+  function load() {
+    // sets start and end of postnumbers and also update counter
+    const start = counter
+    const end = start + quantity - 1
+    counter = end + 1
+
+    // open up the ajax request
+    const request = new XMLHttpRequest();
+    request.open('POST', '/posts')
+    request.onload = () => {
+      // gets the response from the server in form of json and converts it to textx before rendering the text
+      const data = JSON.parse(request.responseText)
+      data.forEach(add)
+    }
+      // add start data and end data to the request by appending them to the data atrribute
+      const data = new FormData()
+      data.append('start', start)
+      data.append('end', end)
+      // sending the request stored in the data variable above
+
+      request.send(data)
+    // this is another version of the scroll2.html running on the post0.py flask app. this uses handlebars instead of using pure javascript to create new element and stuuf we use handlebars, check the example above
+    const post_template = Handlebars.compile(document.querySelector('#post').innerHTML)
+    function add(contents) {
+      const post = post_template({'contents': contents})
+      document.querySelector('#posts').innerHTML += post
+      // hides the button when it is clicked
+      document.querySelectorAll('button').forEach(button => {
+        button.onclick = function() {
+          this.parentElement.remove()
+        }
+      })
+    }
+
+
+
+
+   }
+</script>
+<style media="screen">
+  .post {background-color: green;
+        padding: 20px 10px 20px 10px;
+        margin: 10px 10px 10px 10px;}
+button {float: right;
+       color: blue;
+       border-radius: 10px;}
+</style>
+    <body>
+<ul id="posts">
+
+</ul>
+  </body>
+</html>

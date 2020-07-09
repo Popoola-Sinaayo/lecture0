@@ -12,13 +12,14 @@ db.init_app(app)
 
 
 @app.route('/')
-def web1():
+def web0():
+    return render_template("web0.html")
 
-
-
+@app.route('/signup')
+def web():
     return render_template("web1.html")
 
-@app.route('/submit', methods=["POST"])
+@app.route('/submit', methods=["POST", "GET"])
 def web2():
     FirstName = request.form.get("FirstName")
     LastName = request.form.get("LastName")
@@ -43,10 +44,34 @@ def web2():
 def web3():
     UserName = request.form.get("UserName")
     Password = request.form.get("Password")
-    User = Website2(UserName, Password)
-    db.session.add(User)
-    db.session.commit()
-    return render_template("web3.html", UserName=UserName)
+    Users = Website2.query.all()
+    for user in Users:
+        use = user.UserName
+    if UserName == use:
+        return render_template("web2.html", message="This Username has already been Used Please try Another Username", UserName=UserName)
+    else:
+        User = Website2(UserName, Password)
+        db.session.add(User)
+        db.session.commit()
+        return render_template("web3.html", UserName=UserName)
+@app.route('/login', methods=["POST", "GET"])
+def login():
+    if request.method == "GET":
+        return render_template("web0.html")
+    else:
+        UserName = request.form.get("UserName")
+        Password = request.form.get("Password")
+        User = Website2.query.all()
+        for Use in User:
+            UserNames = Use.UserName
+        for Us in User:
+            UserPassword = Us.Password
+        if UserName == '' or Password == '':
+            return render_template("web0.html", message="Plesae Fill the required fields")
+        if UserName == UserNames and Password == UserPassword:
+            return render_template("web3.html", UserName=UserName, login="login Succesful")
+        else:
+            return render_template("web0.html", message="Invalid Credentials")
 
 if __name__ == "__main__":
     web1()

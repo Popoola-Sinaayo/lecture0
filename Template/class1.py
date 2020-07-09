@@ -4,7 +4,7 @@ db = SQLAlchemy()
 
 class Website(db.Model):
     __tablename__ = "WebsiteUser"
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, foreign_key=True)
     FirstName = db.Column(db.String)
     LastName = db.Column(db.String)
     Email = db.Column(db.String)
